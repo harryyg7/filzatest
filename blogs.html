@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filza · blogs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .blogs-page-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--rose-dark);
+      margin: 40px 0 20px;
+    }
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .blog-full-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(200, 109, 120, 0.08);
+      border: 1px solid var(--rose-light);
+    }
+    .blog-full-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .blog-full-card .blog-content {
+      padding: 20px;
+    }
+    .blog-full-card h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--rose-dark);
+      margin-bottom: 10px;
+    }
+    .blog-full-card p {
+      color: #5f4f4f;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="offer-strip"><span>✨ free shipping</span> on orders above ₹499</div>
+<header class="navbar">
+  <a href="index.html" class="logo">filza.</a>
+  <div class="search-container">
+    <input type="text" placeholder="Search..." id="search-input">
+    <button id="search-btn"><i class="fas fa-search"></i></button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="products.html">shop</a></li>
+    <li class="dropdown">
+      <a href="#">categories <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-menu">
+        <a href="products.html?cat=sunscreen">sunscreen</a>
+        <a href="products.html?cat=oils">oils & serums</a>
+        <a href="products.html?cat=gels">gels & moisturizers</a>
+        <a href="products.html?cat=cleansers">cleansers</a>
+      </div>
+    </li>
+    <li><a href="products.html?cat=new">new</a></li>
+    <li><a href="blogs.html">blogs</a></li>
+    <li><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+    <li><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span class="cart-count" id="cart-count">0</span></a></li>
+  </ul>
+</header>
+
+<main class="container">
+  <h1 class="blogs-page-title">the glow journal</h1>
+  <div class="blogs-grid">
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1598620617137-2ab990a1b8c8?w=600&auto=format" alt="sunscreen myths">
+      <div class="blog-content">
+        <h3>sunscreen myths busted</h3>
+        <p>Do you really need SPF indoors? We break down the facts and help you choose the right protection for your skin type.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1596755094514-2b9c4fb08e92?w=600&auto=format" alt="layering oils">
+      <div class="blog-content">
+        <h3>layering oils & gels</h3>
+        <p>The correct order for maximum absorption – learn how to combine your favorite Filza products for glowing skin.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1583753075967-89e7f1a3c79b?w=600&auto=format" alt="rose gold routine">
+      <div class="blog-content">
+        <h3>rose gold routine</h3>
+        <p>How we formulated our bestselling serum and the story behind the rose gold aesthetic.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=600&auto=format" alt="vitamin c guide">
+      <div class="blog-content">
+        <h3>vitamin C 101</h3>
+        <p>Everything you need to know about incorporating vitamin C into your morning routine.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1611089931561-394cf7aeb937?w=600&auto=format" alt="eye care">
+      <div class="blog-content">
+        <h3>eye care essentials</h3>
+        <p>How to tackle dark circles and puffiness with the right ingredients.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+    <article class="blog-full-card">
+      <img src="https://images.unsplash.com/photo-1571781418606-5a3c8b91f9b4?w=600&auto=format" alt="mask guide">
+      <div class="blog-content">
+        <h3>mask guide</h3>
+        <p>Peeling, clay, or sheet? Find out which mask suits your skin’s current needs.</p>
+        <a href="#" class="btn-outline-rose">read full article</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-content container">...</div>
+  <div class="footer-bottom">© 2026 filza skincare. all rights reserved.</div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

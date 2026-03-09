@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filza · shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .category-heading {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--rose-dark);
+      margin: 30px 0 10px;
+      text-transform: capitalize;
+    }
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0 40px;
+      flex-wrap: wrap;
+    }
+    .filter-tabs a {
+      color: var(--rose-dark);
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 40px;
+      background: var(--rose-light);
+      font-size: 0.9rem;
+    }
+    .filter-tabs a:hover,
+    .filter-tabs a.active {
+      background: var(--rose);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="offer-strip"><span>✨ free shipping</span> on orders above ₹499</div>
+<header class="navbar">
+  <a href="index.html" class="logo">filza.</a>
+  <div class="search-container">
+    <input type="text" placeholder="Search for products..." id="search-input">
+    <button id="search-btn"><i class="fas fa-search"></i></button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="products.html">shop</a></li>
+    <li class="dropdown">
+      <a href="#">categories <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-menu">
+        <a href="products.html?cat=sunscreen">sunscreen</a>
+        <a href="products.html?cat=oils">oils & serums</a>
+        <a href="products.html?cat=gels">gels & moisturizers</a>
+        <a href="products.html?cat=cleansers">cleansers</a>
+      </div>
+    </li>
+    <li><a href="products.html?cat=new">new</a></li>
+    <li><a href="blogs.html">blogs</a></li>
+    <li><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+    <li><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span class="cart-count" id="cart-count">0</span></a></li>
+  </ul>
+</header>
+
+<main class="container">
+  <div id="category-heading" class="category-heading">all products</div>
+  <div class="filter-tabs">
+    <a href="products.html" class="filter-all">all</a>
+    <a href="products.html?cat=sunscreen" class="filter-sunscreen">sunscreen</a>
+    <a href="products.html?cat=oils" class="filter-oils">oils & serums</a>
+    <a href="products.html?cat=gels" class="filter-gels">gels & creams</a>
+    <a href="products.html?cat=cleansers" class="filter-cleansers">cleansers</a>
+    <a href="products.html?cat=new" class="filter-new">new launches</a>
+  </div>
+  <div class="product-grid" id="products-grid"></div>
+</main>
+
+<footer class="footer">
+  <!-- same footer as index.html -->
+  <div class="footer-content container">...</div>
+  <div class="footer-bottom">© 2026 filza skincare. all rights reserved.</div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="script.js"></script>
+<script>
+  // Category filtering logic
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let cat = urlParams.get('cat') || 'all';
+    // also handle search
+    const searchQuery = urlParams.get('search');
+
+    const headingEl = document.getElementById('category-heading');
+    const catNames = {
+      all: 'all products',
+      sunscreen: 'sunscreen',
+      oils: 'oils & serums',
+      gels: 'gels & creams',
+      cleansers: 'cleansers',
+      new: 'new launches'
+    };
+    headingEl.textContent = catNames[cat] || 'products';
+
+    // highlight active tab
+    document.querySelector(`.filter-${cat}`)?.classList.add('active');
+
+    // filter products
+    let filtered = [];
+    if (searchQuery) {
+      // simple search by name
+      const query = searchQuery.toLowerCase();
+      filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      headingEl.textContent = `search results for "${searchQuery}"`;
+    } else if (cat === 'all') {
+      filtered = products;
+    } else {
+      filtered = products.filter(p => p.cat === cat);
+    }
+
+    // render
+    const grid = document.getElementById('products-grid');
+    grid.innerHTML = '';
+    if (filtered.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; margin:40px;">No products found.</p>';
+      return;
+    }
+    filtered.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <a href="product.html?id=${p.id}" style="text-decoration: none; color: inherit;">
+          <img src="${p.img}" alt="${p.name}">
+          <h4>${p.name}</h4>
+          <div class="price">₹${p.price}</div>
+        </a>
+        <button onclick="addToCart(${p.id})">add to cart</button>
+      `;
+      grid.appendChild(card);
+    });
+  })();
+</script>
+</body>
+</html>
