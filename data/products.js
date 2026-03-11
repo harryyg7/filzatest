@@ -1,4 +1,5 @@
-// data/products.js
+// data/products.js – all product information
+// You can replace the image URLs with your own.
 const products = [
   { id: 1, name: "mineral sunscreen SPF 50", price: 650, img: "https://images.unsplash.com/photo-1587583770025-32851badfeb2?w=400&auto=format", cat: "sunscreen", description: "Weightless mineral protection with zinc oxide. Non-greasy, leaves no white cast.", details: "SPF 50 PA++++, water-resistant up to 40min." },
   { id: 2, name: "rosehip night oil", price: 890, img: "https://images.unsplash.com/photo-1608571423902-eed8a5ad5a5b?w=400&auto=format", cat: "oils", description: "Cold-pressed rosehip oil rich in vitamins A and C. Helps fade scars and hydrate overnight.", details: "30ml, 100% organic." },
