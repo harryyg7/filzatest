@@ -4,42 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filza · rose gold skincare</title>
+  <!-- Font Awesome & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Offer strip -->
+  <!-- OFFER STRIP -->
   <div class="offer-strip">
     <span>✨ free shipping</span> on orders over ₹499 &nbsp;&nbsp;|&nbsp;&nbsp; <span>15% off</span> your first order · code: FILZA15
   </div>
 
-  <!-- Navbar with centered search -->
+  <!-- NAVBAR (with official logo) -->
   <header class="navbar">
-    <a href="index.html" class="logo">filza.</a>
+    <a href="index.html" class="logo">
+      <!-- Replace this URL with your own logo if needed -->
+      <img src="https://www.filza.in/wp-content/themes/filza/assets/images/logo.png" alt="Filza">
+    </a>
     <div class="search-container">
       <input type="text" placeholder="Search for products..." id="search-input">
       <button id="search-btn"><i class="fas fa-search"></i></button>
     </div>
     <ul class="nav-links">
-      <li><a href="products.html">shop</a></li>
       <li class="dropdown">
-        <a href="#">categories <i class="fas fa-chevron-down"></i></a>
+        <a href="#">shop <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-menu">
+          <a href="products.html">all products</a>
           <a href="products.html?cat=sunscreen">sunscreen</a>
           <a href="products.html?cat=oils">oils & serums</a>
           <a href="products.html?cat=gels">gels & moisturizers</a>
           <a href="products.html?cat=cleansers">cleansers</a>
+          <a href="products.html?cat=new">new launches</a>
+          <a href="manufacturing.html">third‑party manufacturing</a>
         </div>
       </li>
-      <li><a href="products.html?cat=new">new</a></li>
       <li><a href="blogs.html">blogs</a></li>
+      <li><a href="profile.html"><i class="far fa-user"></i></a></li>
       <li><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
       <li><a href="cart.html"><i class="fas fa-shopping-bag"></i> <span class="cart-count" id="cart-count">0</span></a></li>
     </ul>
   </header>
 
-  <!-- Slideshow -->
+  <!-- SLIDESHOW (banners) – replace images as needed -->
   <section class="slideshow-container">
     <div class="slide fade" style="background-image: url('https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=1200&auto=format');">
       <div class="slide-text">
@@ -71,7 +77,7 @@
     </div>
   </section>
 
-  <!-- Category range -->
+  <!-- CATEGORY RANGE (images made smaller via CSS) -->
   <section class="category-range container">
     <h2 class="section-title">our range</h2>
     <div class="category-grid">
@@ -94,7 +100,7 @@
     </div>
   </section>
 
-  <!-- Bestsellers (10 products) -->
+  <!-- BESTSELLERS (10 products) -->
   <section class="bestsellers container">
     <h2 class="section-title">bestsellers ⭐</h2>
     <div class="product-grid" id="bestseller-grid"></div>
@@ -103,30 +109,49 @@
     </div>
   </section>
 
-  <!-- New launches -->
+  <!-- NEW LAUNCHES -->
   <section class="new-launches container">
     <h2 class="section-title">new on shelf ✨</h2>
     <div class="product-grid" id="newlaunch-grid"></div>
   </section>
 
-  <!-- Blog snippets -->
+  <!-- TESTIMONIALS -->
+  <section class="testimonials container">
+    <h2 class="section-title">what our customers say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"The mineral sunscreen is a game changer! No white cast and my skin feels protected all day."</p>
+        <h4>– Priya K.</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"I love the rose gold mist – it gives my skin a subtle glow and smells divine."</p>
+        <h4>– Anjali S.</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"Filza's vitamin C serum brightened my skin in just two weeks. Highly recommend!"</p>
+        <h4>– Rohan M.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG SNIPPETS (latest blogs) -->
   <section class="blog-section container">
     <h2 class="section-title">the glow journal</h2>
     <div class="blog-grid">
       <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1598620617137-2ab990a1b8c8?w=600&auto=format" alt="blog 1">
+        <img src="https://images.unsplash.com/photo-1598620617137-2ab990a1b8c8?w=600&auto=format" alt="sunscreen myths">
         <h3>sunscreen myths busted</h3>
         <p>do you really need SPF indoors? we break it down.</p>
         <a href="blogs.html" class="btn-outline-rose">read more</a>
       </article>
       <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1596755094514-2b9c4fb08e92?w=600&auto=format" alt="blog 2">
+        <img src="https://images.unsplash.com/photo-1596755094514-2b9c4fb08e92?w=600&auto=format" alt="layering oils">
         <h3>layering oils & gels</h3>
         <p>the correct order for maximum absorption.</p>
         <a href="blogs.html" class="btn-outline-rose">read more</a>
       </article>
       <article class="blog-card">
-        <img src="https://images.unsplash.com/photo-1583753075967-89e7f1a3c79b?w=600&auto=format" alt="blog 3">
+        <img src="https://images.unsplash.com/photo-1583753075967-89e7f1a3c79b?w=600&auto=format" alt="rose gold routine">
         <h3>rose gold routine</h3>
         <p>how we formulated our bestselling serum.</p>
         <a href="blogs.html" class="btn-outline-rose">read more</a>
@@ -134,16 +159,30 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- NEWSLETTER SECTION -->
+  <section class="newsletter-section container">
+    <div class="newsletter-content">
+      <h3>join the filza family</h3>
+      <p>Subscribe for 15% off your first order, plus exclusive offers and skincare tips.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+        <input type="email" placeholder="your email address" required>
+        <button type="submit" class="btn-rose">subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER (matching filza.in style) -->
   <footer class="footer">
     <div class="footer-content container">
       <div class="footer-col">
-        <h4>filza.</h4>
+        <!-- Footer logo – you can use the same image or text -->
+        <h4><img src="https://www.filza.in/wp-content/themes/filza/assets/images/logo.png" alt="Filza" style="height:30px;"></h4>
         <p>clean, effective skincare with a touch of rose gold.</p>
         <div class="social-icons">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -151,27 +190,28 @@
         <a href="#">about us</a>
         <a href="#">stores</a>
         <a href="#">gift cards</a>
+        <a href="manufacturing.html">third‑party manufacturing</a>
       </div>
       <div class="footer-col">
         <h4>help</h4>
         <a href="#">shipping</a>
         <a href="#">returns</a>
         <a href="#">faq</a>
+        <a href="#">contact us</a>
       </div>
       <div class="footer-col">
-        <h4>subscribe</h4>
-        <p>get 15% off your first order</p>
-        <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed (demo)');">
-          <input type="email" placeholder="your email" required>
-          <button type="submit"><i class="fas fa-arrow-right"></i></button>
-        </form>
+        <h4>legal</h4>
+        <a href="#">privacy policy</a>
+        <a href="#">terms of use</a>
+        <a href="#">cookie policy</a>
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 filza skincare. all rights reserved.
+      <p>© 2026 filza skincare. all rights reserved. | designed with ♡ in india</p>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="data/products.js"></script>
   <script src="script.js"></script>
 </body>

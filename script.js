@@ -1,4 +1,4 @@
-// script.js – slideshow, product grids, cart management
+// script.js – slideshow, product grids, cart management, dynamic buttons
 
 // ---------- CART MANAGEMENT (localStorage) ----------
 let cart = JSON.parse(localStorage.getItem('filzaCart')) || [];
@@ -6,11 +6,16 @@ let cart = JSON.parse(localStorage.getItem('filzaCart')) || [];
 function saveCart() {
   localStorage.setItem('filzaCart', JSON.stringify(cart));
   updateCartCount();
+  updateAllAddToCartButtons(); // refresh button states after cart change
 }
 
 function updateCartCount() {
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
   document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+}
+
+function isInCart(productId) {
+  return cart.some(item => item.id === productId);
 }
 
 function addToCart(productId) {
@@ -23,29 +28,37 @@ function addToCart(productId) {
     cart.push({ id: productId, name: product.name, price: product.price, img: product.img, quantity: 1 });
   }
   saveCart();
-  alert(`✨ ${product.name} added to cart`);
+  // No alert – button will change to "go to cart"
 }
 
-function removeFromCart(productId) {
-  cart = cart.filter(item => item.id !== productId);
-  saveCart();
-  if (window.location.pathname.includes('cart.html')) renderCartPage();
-}
+// Function to update all "add to cart" buttons based on cart state
+function updateAllAddToCartButtons() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    const productLink = card.querySelector('a[href*="product.html?id="]');
+    if (!productLink) return;
+    const href = productLink.getAttribute('href');
+    const match = href.match(/id=(\d+)/);
+    if (!match) return;
+    const productId = parseInt(match[1]);
+    const btn = card.querySelector('button');
+    if (!btn) return;
 
-function updateQuantity(productId, newQty) {
-  const item = cart.find(i => i.id === productId);
-  if (item) {
-    if (newQty <= 0) {
-      removeFromCart(productId);
+    if (isInCart(productId)) {
+      btn.textContent = 'go to cart';
+      btn.onclick = () => { window.location.href = 'cart.html'; };
+      btn.classList.add('in-cart');
     } else {
-      item.quantity = newQty;
-      saveCart();
+      btn.textContent = 'add to cart';
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        addToCart(productId);
+      };
+      btn.classList.remove('in-cart');
     }
-  }
-  if (window.location.pathname.includes('cart.html')) renderCartPage();
+  });
 }
 
-// ---------- RENDER PRODUCT CARDS (with links to detail page) ----------
+// ---------- RENDER PRODUCT CARDS ----------
 function renderProductGrid(containerId, productArray) {
   const grid = document.getElementById(containerId);
   if (!grid) return;
@@ -59,10 +72,11 @@ function renderProductGrid(containerId, productArray) {
         <h4>${p.name}</h4>
         <div class="price">₹${p.price}</div>
       </a>
-      <button onclick="addToCart(${p.id})">add to cart</button>
+      <button class="add-to-cart-btn" data-id="${p.id}">add to cart</button>
     `;
     grid.appendChild(card);
   });
+  updateAllAddToCartButtons();
 }
 
 // ---------- SLIDESHOW ----------
@@ -128,9 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Expose functions globally for onclick
+// Expose functions globally
 window.addToCart = addToCart;
-window.removeFromCart = removeFromCart;
-window.updateQuantity = updateQuantity;
 window.changeSlide = changeSlide;
 window.currentSlide = currentSlide;
+window.updateAllAddToCartButtons = updateAllAddToCartButtons;
